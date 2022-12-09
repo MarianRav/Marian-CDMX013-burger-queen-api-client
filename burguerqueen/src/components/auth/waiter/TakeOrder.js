@@ -48,6 +48,9 @@ function Menu({ user, changeUser}) {
   //Funciones que renderizan/muestra un componente por cada elemento del menu de la API
 
   const [order, setOrder] = useState([]);
+  const [customerName, setCustomerName] = useState('');
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [finishedOrder, setFinishedOrder] = useState({});
 
   function addItem(item) {
     if (!order.find((element) => element.product.id === item.id)) {
@@ -63,18 +66,6 @@ function Menu({ user, changeUser}) {
       );
     }
   }
-  function removeItem(item) {
-    order.find((element) => element.product.id === item.product.id)
-      setOrder(
-        order.map((element) =>
-          element.product.id === item.product.id  ? { ...element, qty: element.qty - 1 }: element
-        )
-      );
-  }
-function deleteItem(item){
- const filterItem= order.filter((element) => element.product.id !== item.product.id)
- setOrder(filterItem)
-}
   console.log(order);
   function productListBreakfast() {
     return breakfast.map((item) => {
@@ -108,22 +99,45 @@ function deleteItem(item){
         <OrderDetails
           key={item.product.id.toString()}
           qty={item.qty}
-          item={item}
           name={item.product.name}
           price={item.product.price}
-          removeItem={removeItem}
-          deleteItem={deleteItem}
         />
       );
     });
   }
 const total = () => {
-  return order.reduce((acc, item) => acc + item.qty * item.product.price, 0);
+  let total = order.reduce((acc, item) => acc + item.qty * item.product.price, 0);
+  setTotalAmount(total)
 }
+useEffect(() => {
+  total()
+}, [showOrderItems()]);
+
+  console.log(customerName)
+  const getName = (e) =>{
+    setCustomerName(e.target.value)
+  }
+  
+  const completeOrder = () => {
+    setFinishedOrder({
+      customerName: customerName,
+      date: new Date(),
+      items: order,
+      total: totalAmount
+    })
+    axios.post('https://6393aaca11ed187986bb8706.mockapi.io/Orders', {order: finishedOrder})
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+ 
+console.log(finishedOrder)
   return (
     <div className="menuContainer">
-      <NavBar 
-      changeUser={changeUser}/>
+      <NavBar changeUser={changeUser} />
       <main className="menu">
         <section className="options-menu">
           <Button
@@ -158,7 +172,7 @@ const total = () => {
         <h3 className="order-summary-text">Order summary</h3>
         <div className="input-customer-name">
           <label>Customer's Name </label>
-          <input className="customer-name-input" type="text"></input>
+          <input className="customer-name-input" type="text" onChange={getName}></input>
         </div>
         <div className="order-container">
           <div className="order-description">
@@ -175,8 +189,8 @@ const total = () => {
             </table>
           </div>
           <p className="price"> Total price </p>
-          <p className="number-price">$ {total()}.00</p>
-          <SendButton name="Send to kitchen" secondclass="orders" />
+          <p className="number-price">$ {totalAmount}.00</p>
+          <SendButton name="Send to kitchen" secondclass="orders" completeOrder={completeOrder} />
         </div>
       </section>
     </div>
