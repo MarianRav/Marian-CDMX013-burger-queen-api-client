@@ -1,6 +1,6 @@
 .product-card{
     position: relative;
-    margin: 0 0 24px 24px;
+    margin: 0 0 24px 30px;
     width: 192px;
     height: 121px;
     top: 130px;
@@ -53,4 +53,10 @@ line-height: 20px;
 text-align: center;
 color: #000000;
 
+}
+
+@media (max-width: 768px) {
+  .product-card {
+    margin: 0 0 24px 15px;
+  }
 }
