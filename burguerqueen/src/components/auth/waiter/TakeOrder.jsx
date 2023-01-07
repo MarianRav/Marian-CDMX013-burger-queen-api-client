@@ -168,7 +168,6 @@ function Menu({ user, changeUser }) {
               name="Lunch & Dinner"
               secondclass="center"
             />
-            <div className="lineOne" />
           </section>
           <div className="product-card-container">
             <>
@@ -195,12 +194,14 @@ function Menu({ user, changeUser }) {
                   })}
             </>
           </div>
-          <img
-            className="logo-person"
-            src={require("../../../images/person-pin.png")}
-            alt="Person icon"
-          />
-          <p className="waiter-name">{user}</p>
+
+            <img
+              className="logo-person"
+              src={require("../../../images/person-pin.png")}
+              alt="Person icon"
+            />
+            <p className="waiter-name">{user}</p>
+          
         </div>
 
         <section className="order-summary-container">
@@ -248,8 +249,10 @@ function Menu({ user, changeUser }) {
                   </>
                 </table>
               </div>
-              <p className="price"> Total price </p>
-              <p className="number-price">$ {total()}.00</p>
+              <div className="order-descriptiion-totalprice-container">
+                <p className="price"> Total price </p>
+                <p className="number-price">$ {total()}.00</p>
+              </div>
               <SendButton name="Send to kitchen" secondclass="orders" />
               {emptyOrderMessage ? (
                 <div className="empty-order-message">

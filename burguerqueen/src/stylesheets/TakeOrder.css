@@ -50,6 +50,7 @@
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
+  position: relative;
 }
 
 .menu {
@@ -62,7 +63,7 @@
 .options-and-products-container{
   margin-top: 106px;
   width: 55%;
-  height: 100%;
+  height: auto;
   border-right: 1px solid #9d9999;
 }
 
@@ -94,58 +95,74 @@
 
 .button.center {
   left: 240px;
-  top: 135px;
+  top: 30px;
 }
 
 .button.left {
   left: 24px;
-  top: 135px;
+  top: 30px;
 }
 
-.button:hover {
+/*.button:hover {
+  background-color: #f3ede2;
+  color: #3d3838;
+  cursor: pointer;
+  border: 2px solid #101315;
+}*/
+.button:active {
   background-color: #f3ede2;
   color: #3d3838;
   cursor: pointer;
   border: 2px solid #101315;
 }
 
-.lineOne {
-  position: absolute;
-  width: 1194px;
-  top: 212px;
+.options-menu {
   border-bottom: 1px solid #9d9999;
+  position: relative;
+  height: 106px;
+}
+
+.user-name-and-person-icon-container {
+  position: absolute;
+  top: 5px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
 }
 
 .logo-person {
-  display: flex;
-  position: absolute;
+  /*display: flex;*/
+  position: absolute; 
   height: 40px;
   width: 40px;
   left: 24px;
-  top: 753px;
+  bottom: 30px;
 }
 
 .waiter-name {
-  display: flex;
+  /*display: flex;*/
   position: absolute;
   font-family: "Be Vietnam Pro";
   font-size: 20px;
   left: 65px;
-  top: 758px;
+  bottom: 40px;
   color: #f3ede2;
 }
 
-.order-sumary-container {
-  display: flex;
+.order-summary-container {
+/*  display: flex;
   flex-wrap: wrap;
-  align-content: flex-start;
+  flex-direction: row;
+  /*align-content: flex-start;*/
+  position: relative;
+  width: 45%;
+  height: 100%;
 }
 
 .order-summary-text {
   position: absolute;
-  width: 520px;
+  width: 100%;
   height: 34px;
-  left: 675px;
   top: 113px;
   font-family: "Quicksand";
   font-style: normal;
@@ -157,12 +174,20 @@
   color: #f3ede2;
 }
 
-label {
+.input-customer-name {
+  border-bottom: 1px solid #9d9999;
+  height: 65px;
+  top: 147px;
+  width: 100%;
   position: absolute;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+label {
   width: 175px;
   height: 27px;
-  left: 695px;
-  top: 166px;
   font-family: "Quicksand";
   font-style: normal;
   font-weight: 500;
@@ -175,11 +200,8 @@ label {
 .customer-name-input {
   font-family: "Quicksand";
   font-size: 20px;
-  position: absolute;
-  width: 266px;
+  width: 60%;
   height: 43px;
-  left: 879px;
-  top: 158px;
   background: #3d3838;
   border-radius: 10px;
   color: #f3ede2;
@@ -188,13 +210,23 @@ label {
   padding-left: 24px;
 }
 
-.order-description {
+.order-container {
+  width: 100%;
+  height: auto;
   position: absolute;
+  top: 212px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.order-description {
   height: 400px;
-  width: 522px;
+  width: 97%;
   top: 236px;
   color: #f3ede2;
-  margin: 0px 24px 0px 14px;
+  padding: 24px 0px 0px 14px;
   overflow-y: scroll;
 }
 
@@ -208,6 +240,9 @@ label {
   border-radius: 10px;
 }
 
+table {
+  width: 100%;
+}
 .style-name-column {
   width: 200px;
   padding: 0 20px;
@@ -217,9 +252,13 @@ label {
   width: 100px;
 }
 
+.order-descriptiion-totalprice-container{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .price {
-  position: absolute;
-  top: 670px;
   font-family: "Be Vietnam Pro";
   font-weight: 400;
   font-size: 24px;
@@ -228,17 +267,14 @@ label {
 }
 
 .number-price {
-  position: absolute;
-  top: 670px;
   font-family: "Be Vietnam Pro";
   font-weight: 400;
   font-size: 24px;
   color: #f3ede2;
-  margin-left: 390px;
+  margin-right: 24px;
 }
 
 .send-button {
-  position: absolute;
   width: 472px;
   height: 47px;
   background: #3d3838;
@@ -275,8 +311,8 @@ label {
     display: flex;
     position: absolute;
     background-color: BLACK;
-    width: 1194px;
-    height: 834px;
+    width: 100%;
+    height: 100%;
     margin-top: -834px;
     color: #F3EDE2;
     opacity: 0.9;
@@ -334,3 +370,17 @@ label {
   cursor: pointer;
 }
 
+@media (max-width: 1000px) {
+  .send-button {
+    width: 215px;
+  }
+}
+@media (max-width: 768px) {
+  .options-menu {
+    height: 190px;  
+  }
+  .button.center {
+    left: 24px;
+    top: 110px;
+  }
+}

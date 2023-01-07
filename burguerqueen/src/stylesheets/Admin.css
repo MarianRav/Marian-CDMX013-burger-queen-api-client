@@ -75,14 +75,14 @@
     border-bottom: 1px solid #9D9999;
 }
 
-.logo-person {
+/*.logo-person {
     display: flex;
     position: absolute;
     height: 40px;
     width: 40px;
     left: 24px;
     top: 753px;
-}
+}*/
 
 .admin-name {
     display: flex;

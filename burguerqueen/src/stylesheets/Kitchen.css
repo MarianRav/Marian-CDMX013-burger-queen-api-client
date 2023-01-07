@@ -4,8 +4,8 @@
   box-sizing: content-box;
 }
 .kitchenContainer {
-  width: 1194px;
-  height: 834px;
+  width: 100%;
+  height: 100vh;
   position: relative;
   background-color: #101315;
 }
@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   text-align: center;
-  width: 1000px;
+  width: 90%;
   height: 600px;
   overflow-x: scroll;
   justify-content: space-between;
@@ -32,22 +32,22 @@
   border-radius: 10px;
 }
 
-.logo-person {
+/*.logo-person {
   display: flex;
   position: absolute;
   height: 40px;
   width: 40px;
   left: 24px;
   top: 753px;
-}
+}*/
 
 .chef-name {
-  display: flex;
+ 
   position: absolute;
   font-family: "Be Vietnam Pro";
   font-size: 20px;
   left: 65px;
-  top: 758px;
+  bottom: 40px;
   color: #f3ede2;
 }
 .kitchen-done {
